@@ -1,0 +1,4 @@
+/node_modules
+/public/download/*
+.vscode
+.env
