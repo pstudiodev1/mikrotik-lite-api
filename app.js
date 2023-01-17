@@ -15,7 +15,9 @@ const upload = multer({ dest: os.tmpdir() });
 // Load .env file
 require("dotenv").config();
 
-const redisClient = redis.createClient();
+const redisClient = redis.createClient({
+  url: 'redis://redis:6379'
+});
 redisClient.on("error", e => {
   console.log(e);
 });

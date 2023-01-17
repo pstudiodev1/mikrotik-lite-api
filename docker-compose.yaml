@@ -5,10 +5,18 @@ networks:
 
 services:
   redis:
-      image: bitnami/redis:latest
-      ports:
+    image: bitnami/redis:latest
+    ports:
       - "6379:6379"
-      environment:
-        - ALLOW_EMPTY_PASSWORD=yes
-      networks:
-        - mikrotik-lite-api
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - mikrotik-lite-api
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+    networks:
+      - mikrotik-lite-api
